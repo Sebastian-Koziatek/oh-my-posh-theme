@@ -16,7 +16,21 @@
           "properties": {
             "time_format": "15:04:05"
           },
-          "template": "  {{ .CurrentDate | date .Format }} <#e05d5d,#161a1f></><#161a1f,#e6c07b></>"
+          "template": "  {{ .CurrentDate | date .Format }} <#e05d5d,#161a1f></><#161a1f,#f4a261></>"
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#000000",
+          "background": "#f4a261",
+          "properties": {
+            "display_default": true,
+            "display_host": true,
+            "display_user": true,
+            "ssh_only": false
+          },
+          "template": "  {{ .HostName }} <#f4a261,#161a1f></><#161a1f,#e6c07b></>"
         },
         {
           "type": "path",
@@ -32,20 +46,7 @@
             "folder_icon": "",
             "home_icon": "~"
           },
-          "template": " {{ .Path }}<#e6c07b,#161a1f></><#161a1f,#5b3f86></>"
-        },
-        {
-          "type": "git",
-          "style": "diamond",
-          "trailing_diamond": "",
-          "foreground": "#ffffff",
-          "background": "#5b3f86",
-          "properties": {
-            "fetch_status": true,
-            "fetch_upstream_icon": true,
-            "branch_icon": " "
-          },
-          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} "
+          "template": " {{ .Path }}<#e6c07b,#161a1f></>"
         }
       ]
     },
@@ -54,9 +55,23 @@
       "alignment": "right",
       "segments": [
         {
-          "type": "executiontime",
+          "type": "git",
           "style": "diamond",
           "leading_diamond": "",
+          "trailing_diamond": "<#5b3f86,#79c7e3></>",
+          "foreground": "#ffffff",
+          "background": "#5b3f86",
+          "properties": {
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "branch_icon": " "
+          },
+          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "leading_diamond": "",
           "trailing_diamond": "",
           "foreground": "#000000",
           "background": "#79c7e3",
